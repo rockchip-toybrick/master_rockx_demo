@@ -22,8 +22,8 @@ def post_process(img, data, fps):
 	for i in range(0, int(data['count'])):
 		for j in range(0, int(data['keypoints'][i]['count'])):
 			points = data['keypoints'][i]['points'][j]
-			x = int(points['x'] * x_scale)
-			y = int(points['y'] * y_scale)
+			x = int(points[0] * x_scale)
+			y = int(points[1] * y_scale)
 			cv2.circle(img, (x, y), 3, color, 3)
 
 		pair = ((1,2), (1,5), (2,3), (3,4), (5,6), (6,7),
@@ -31,10 +31,10 @@ def post_process(img, data, fps):
 				(1,0), (0,14), (14,16), (0,15), (15,17))
 		for n in range(len(pair)):
 			points = data['keypoints'][i]['points']
-			x0 = int(points[pair[n][0]]['x'] * x_scale)
-			y0 = int(points[pair[n][0]]['y'] * y_scale)
-			x1 = int(points[pair[n][1]]['x'] * x_scale)
-			y1 = int(points[pair[n][1]]['y'] * y_scale)
+			x0 = int(points[pair[n][0]][0] * x_scale)
+			y0 = int(points[pair[n][0]][1] * y_scale)
+			x1 = int(points[pair[n][1]][0] * x_scale)
+			y1 = int(points[pair[n][1]][1] * y_scale)
 			if x0 > 0 and x1 > 0 and y0 > 0 and y1 > 0:
 				cv2.line(img, (x0, y0), (x1, y1), color, 2)
 
