@@ -27,6 +27,6 @@ def inference(img):
 	return data
 
 if __name__ == '__main__':
-	rockx = rk_socket_server()
+	rockx = rk_socket_server(8002)
 	rockx.service(demo_name, inference)
 

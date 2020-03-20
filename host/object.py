@@ -37,7 +37,7 @@ def post_process(img, data, fps):
 		return 0
 
 if __name__ == '__main__':
-	rknn = rk_socket_client(demo_name)
+	rknn = rk_socket_client(demo_name, port = 8002)
 	#capture = cv2.VideoCapture("data/3.mp4")
 	capture = cv2.VideoCapture(0)
 	rknn.run(capture, pre_process, post_process)

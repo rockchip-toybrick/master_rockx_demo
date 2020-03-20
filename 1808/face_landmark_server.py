@@ -42,6 +42,6 @@ def inference(img):
 	return total_result
 
 if __name__ == '__main__':
-	rockx = rk_socket_server()
+	rockx = rk_socket_server(8001)
 	rockx.service(demo_name, inference)
 
